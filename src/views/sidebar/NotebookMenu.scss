@@ -1,0 +1,21 @@
+.notebook-menu {
+	height: 100vh;
+	background: var(--clr-dark-800);
+	border-right: 2px solid var(--clr-dark-700);
+	grid-area: notebook-menu;
+
+	.notebook-menu__list {
+		display: flex;
+		justify-content: space-around;
+		list-style: none;
+		color: #556b89;
+
+		svg {
+			cursor: pointer;
+		}
+	}
+
+	.notebook-menu__wrapper-text-field {
+		padding: 1em;
+	}
+}

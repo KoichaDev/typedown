@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+// React dependency
+import { Routes, Route } from 'react-router-dom';
+
+// UI Components
+import Dashboard from './views/dashboard/Dashboard';
+import Login from './views/auth/Login';
+import Register from './views/auth/Register';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Routes>
+			<Route path='/' element={<Dashboard />}></Route>
+			<Route path='/login' element={<Login />}></Route>
+			<Route path='/register' element={<Register />}></Route>
+		</Routes>
+	);
 }
 
 export default App;

@@ -1,0 +1,23 @@
+.sidebar-menu {
+	height: 100vh;
+	background: var(--clr-dark-750);
+	border-right: 2px solid var(--clr-dark-700);
+	grid-area: sidebar-menu;
+
+	.sidebar-menu__list {
+		margin-right: auto;
+		align-items: center;
+		list-style: none;
+
+		li {
+			display: flex;
+			gap: 0.5em;
+			cursor: pointer;
+			padding: 0.25em 0;
+
+			p {
+				color: #4883ab;
+			}
+		}
+	}
+}
