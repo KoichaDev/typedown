@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useAppSelector } from '@/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { isOpenNotebook } from '@/components/editor/notebooks/notebook-slice';
 
 // UI Components
 import { AiOutlineSortAscending, AiOutlineSortDescending, AiOutlineForm } from 'react-icons/ai';
@@ -10,7 +11,11 @@ import './NotebookMenu.scss';
 
 const NotebookMenu = () => {
 	const [isTextFocused, setIsTextFocused] = useState(false);
+
+	const dispatch = useAppDispatch();
 	const notebooks = useAppSelector((state) => state.notebooks.notebooks);
+
+	const openNotebookHandler = (localId: string) => {};
 
 	return (
 		<aside className='[ notebook-menu ]'>
@@ -44,7 +49,10 @@ const NotebookMenu = () => {
 				{notebooks.length > 0 &&
 					notebooks.map(({ localId, title, content }) => {
 						return (
-							<WrapperArticle key={localId} className='flex-flow'>
+							<WrapperArticle
+								key={localId}
+								className='flex-flow'
+								onClick={() => dispatch(isOpenNotebook(localId))}>
 								<h1 className='text-light-200 text-xs'>{title}</h1>
 								<p className='text-light-200 text-xs'>{content}</p>
 							</WrapperArticle>

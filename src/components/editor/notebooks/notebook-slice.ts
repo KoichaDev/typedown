@@ -1,16 +1,14 @@
 import { RootState } from '@/store';
-import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
 import { notebooks } from './notebooks.types';
 import initialNotebooks from './intialNotebooks';
 
 export type NotebooksState = {
 	notebooks: notebooks[];
-	selectedNotebookId?: notebooks['localId'] | null;
 };
 
 const initialState: NotebooksState = {
 	notebooks: initialNotebooks,
-	selectedNotebookId: undefined,
 };
 
 export const notebooksSlice = createSlice({
@@ -19,6 +17,14 @@ export const notebooksSlice = createSlice({
 	reducers: {
 		addNotebook: (state, action: PayloadAction<notebooks[]>) => {},
 		removeNotebook: (state, action: PayloadAction<notebooks[]>) => {},
+		isOpenNotebook: (state, action: PayloadAction<string>) => {
+			const notebooks = state.notebooks;
+			const foundNotebook = notebooks.find((notebook) => notebook.localId === action.payload);
+
+			if (!foundNotebook) return;
+
+			foundNotebook.isOpen = true;
+		},
 		setNotebookTitle: (state, action: PayloadAction<notebooks>) => {
 			const payloadId = action.payload;
 			const existingContent = state.notebooks.find((content) => {
@@ -32,18 +38,6 @@ export const notebooksSlice = createSlice({
 });
 
 // prettier-ignore
-export const { addNotebook, removeNotebook, setNotebookContent, setNotebookTitle } = notebooksSlice.actions;
-
-export const getSelectedNotebook = createSelector(
-	(state: RootState) => state.notebooks,
-	(notebooks) => {
-		if (notebooks.selectedNotebookId) {
-			return notebooks.notebooks.find(
-				(notebook) => notebook.localId === notebooks.selectedNotebookId
-			);
-		}
-		return null;
-	}
-);
+export const { addNotebook, removeNotebook, isOpenNotebook, setNotebookContent, setNotebookTitle } = notebooksSlice.actions;
 
 export default notebooksSlice.reducer;
