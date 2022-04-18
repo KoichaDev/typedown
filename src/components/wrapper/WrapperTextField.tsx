@@ -1,18 +1,23 @@
 import styled from '@emotion/styled';
 
-const WrapperTextField = styled.div((props) => ({
+type WrapperTextFieldProps = {
+	iconVisible?: boolean;
+};
+
+const WrapperTextField = styled.div((props: WrapperTextFieldProps) => ({
 	position: 'relative',
 	svg: {
+		display: props.iconVisible ? 'block' : 'none',
 		position: 'absolute',
 		top: '36%',
 		left: '6%',
 	},
 
 	'input[type="text"]': {
-		height: '4.5vh',
-		textIndent: '1.75rem',
+		height: '4vh',
+		textIndent: props.iconVisible ? '1.75rem' : '0rem',
 		borderRadius: '5px',
-		outline: 'none',
+		border: 'none',
 	},
 }));
 

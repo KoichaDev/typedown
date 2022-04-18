@@ -5,6 +5,7 @@ export type TextFieldProps = {
 	classNameWrapperTextField?: string;
 	classNameTextField?: string;
 	isVisibleLabel?: boolean;
+	iconVisible?: boolean;
 	label: string;
 	name: string;
 } & React.HTMLProps<HTMLInputElement>;

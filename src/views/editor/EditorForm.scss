@@ -1,0 +1,13 @@
+.editor-container {
+	.editor-container__text-title {
+		margin: 1em;
+		background: transparent;
+		border: none;
+		color: #9a989d;
+
+		&:focus-visible {
+			outline: none;
+			font-size: 2rem;
+		}
+	}
+}

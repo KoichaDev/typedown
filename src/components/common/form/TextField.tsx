@@ -6,6 +6,7 @@ import { TextFieldProps } from './TextField.types';
 
 // UI Component
 import WrapperTextField from '@/components/wrapper/WrapperTextField';
+
 const TextField = (props: TextFieldProps) => {
 	const {
 		classNameFormControl,
@@ -14,12 +15,13 @@ const TextField = (props: TextFieldProps) => {
 		classNameTextField,
 		label,
 		isVisibleLabel = true,
+		iconVisible = true,
 		name,
 		...rest
 	} = props;
 
 	return (
-		<WrapperTextField className={classNameFormControl}>
+		<WrapperTextField iconVisible={iconVisible} className={classNameFormControl}>
 			<label htmlFor={name} className={classNameLabel}>
 				{isVisibleLabel && <span>{label}</span>}
 			</label>
