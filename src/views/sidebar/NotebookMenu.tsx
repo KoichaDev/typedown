@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAppSelector } from '@/store/hooks';
 
 // UI Components
@@ -8,6 +9,7 @@ import WrapperArticle from '@/components/wrapper/WrapperArticle';
 import './NotebookMenu.scss';
 
 const NotebookMenu = () => {
+	const [isTextFocused, setIsTextFocused] = useState(false);
 	const notebooks = useAppSelector((state) => state.notebooks.notebooks);
 
 	return (
@@ -30,7 +32,10 @@ const NotebookMenu = () => {
 					classNameTextField='w-full text-xs'
 					label='filter-notebook'
 					name='filter-notebook'
+					isTextFocus={isTextFocused}
 					isVisibleLabel={false}
+					onFocus={() => setIsTextFocused(true)}
+					onBlur={() => setIsTextFocused(false)}
 					placeholder='Filter...'
 				/>
 			</nav>

@@ -14,14 +14,19 @@ const TextField = (props: TextFieldProps) => {
 		classNameWrapperTextField,
 		classNameTextField,
 		label,
+		isTextFocus = false,
 		isVisibleLabel = true,
+		setIsClickedField,
 		iconVisible = true,
 		name,
 		...rest
 	} = props;
 
 	return (
-		<WrapperTextField iconVisible={iconVisible} className={classNameFormControl}>
+		<WrapperTextField
+			iconVisible={iconVisible}
+			isTextFocus={isTextFocus}
+			className={classNameFormControl}>
 			<label htmlFor={name} className={classNameLabel}>
 				{isVisibleLabel && <span>{label}</span>}
 			</label>

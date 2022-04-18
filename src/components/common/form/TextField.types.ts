@@ -5,6 +5,8 @@ export type TextFieldProps = {
 	classNameWrapperTextField?: string;
 	classNameTextField?: string;
 	isVisibleLabel?: boolean;
+	isTextFocus?: boolean;
+	setIsClickedField?: boolean;
 	iconVisible?: boolean;
 	label: string;
 	name: string;
