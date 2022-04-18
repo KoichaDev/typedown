@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { isOpenNotebook } from '@/components/editor/notebooks/notebook-slice';
+import { isOpenNotebook } from '@/components/notebooks/notebook-slice';
 
 // UI Components
 import { AiOutlineSortAscending, AiOutlineSortDescending, AiOutlineForm } from 'react-icons/ai';

@@ -1,5 +1,4 @@
-import { RootState } from '@/store';
-import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { notebooks } from './notebooks.types';
 import initialNotebooks from './intialNotebooks';
 
@@ -30,8 +29,6 @@ export const notebooksSlice = createSlice({
 			const existingContent = state.notebooks.find((content) => {
 				return content.localId === payloadId.toString();
 			});
-
-			console.log(existingContent);
 		},
 		setNotebookContent: (state, action: PayloadAction<notebooks>) => {},
 	},
