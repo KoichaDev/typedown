@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { isOpenNotebook } from '@/components/notebooks/notebook-slice';
 
@@ -9,13 +10,20 @@ import WrapperArticle from '@/components/wrapper/WrapperArticle';
 
 import './NotebookMenu.scss';
 
-const NotebookMenu = () => {
+type NotebookMenuprops = {
+	onAddNotebookId: (value: string) => void;
+};
+
+const NotebookMenu = ({ onAddNotebookId }: NotebookMenuprops) => {
 	const [isTextFocused, setIsTextFocused] = useState(false);
 
 	const dispatch = useAppDispatch();
 	const notebooks = useAppSelector((state) => state.notebooks.notebooks);
 
-	const openNotebookHandler = (localId: string) => {};
+	const toggleNotebookHandler = (localId: string) => {
+		dispatch(isOpenNotebook(localId));
+		onAddNotebookId(localId);
+	};
 
 	return (
 		<aside className='[ notebook-menu ]'>
@@ -52,7 +60,7 @@ const NotebookMenu = () => {
 							<WrapperArticle
 								key={localId}
 								className='flex-flow'
-								onClick={() => dispatch(isOpenNotebook(localId))}>
+								onClick={toggleNotebookHandler.bind(null, localId)}>
 								<h1 className='text-light-200 text-xs'>{title}</h1>
 								<p className='text-light-200 text-xs'>{content}</p>
 							</WrapperArticle>

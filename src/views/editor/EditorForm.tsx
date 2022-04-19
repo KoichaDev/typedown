@@ -5,13 +5,12 @@ import WrapperEditor from '@/components/wrapper/WrapperEditor';
 
 import './EditorForm.scss';
 
-const EditorForm = () => {
-	// const title = useAppSelector((state) => state.);
-	const dispatch = useAppDispatch();
+type EditorFormProps = {
+	notebook: unknown;
+};
 
-	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		// dispatch(setMarkdownTitle('1230219083'));
-	};
+const EditorForm = (props: EditorFormProps) => {
+	const { notebook } = props;
 
 	return (
 		<WrapperEditor>
