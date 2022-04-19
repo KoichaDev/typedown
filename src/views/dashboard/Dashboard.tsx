@@ -16,7 +16,7 @@ const Dashboard = () => {
 	const [notebookId, setNotebookId] = useState('');
 	const noteBooks = useAppSelector((state) => state.notebooks.notebooks);
 
-	const foundNotebook = noteBooks.find((notebook) => notebook.localId === notebookId);
+	const foundNotebook = noteBooks?.find((notebook) => notebook.localId === notebookId);
 
 	return (
 		<DashboardLayout>
